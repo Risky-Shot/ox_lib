@@ -1,4 +1,4 @@
-import { Group, Modal, Button, Stack } from '@mantine/core';
+import { Group, Modal, Button, Stack, createStyles } from '@mantine/core';
 import React from 'react';
 import { useNuiEvent } from '../../hooks/useNuiEvent';
 import { useLocales } from '../../providers/LocaleProvider';

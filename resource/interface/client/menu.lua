@@ -54,7 +54,7 @@ function lib.showMenu(id, startIndex)
             while openMenu do
                 if openMenu.disableInput == nil or openMenu.disableInput then
                     DisablePlayerFiring(cache.playerId, true)
-                    HudWeaponWheelIgnoreSelection()
+                    --HudWeaponWheelIgnoreSelection()
                     DisableControlAction(0, control, true)
                 end
 
@@ -109,6 +109,18 @@ function lib.setMenuOptions(id, options, index)
     end
 end
 
+---@param id string
+---@param options MenuOptions | MenuOptions[]
+---@param index? number
+-- function lib.addMenuOptions(id, options, index)
+--     if index then
+--         registeredMenus[id].options[index] = options
+--     else
+--         if not options[1] then error('Invalid override format used, expected table of options.') end
+--         registeredMenus[id].options = options
+--     end
+-- end
+
 ---@return string?
 function lib.getOpenMenu() return openMenu and openMenu.id end
 
@@ -130,7 +142,7 @@ RegisterNUICallback('confirmSelected', function(data, cb)
     end
 
     if menu.cb then
-        menu.cb(data[1], data[2], menu.options[data[1]].args, data[3])
+        menu.cb(data[1], data[2], menu.options[data[1]].args, data[3], openMenu.options[data[1]].values[data[2]])
     end
 end)
 
@@ -143,8 +155,7 @@ RegisterNUICallback('changeIndex', function(data, cb)
     if data[2] then
         data[2] += 1 -- scrollIndex
     end
-
-    openMenu.onSideScroll(data[1], data[2], openMenu.options[data[1]].args)
+    openMenu.onSideScroll(data[1], data[2], openMenu.options[data[1]].args, openMenu.options[data[1]].values[data[2]])
 end)
 
 RegisterNUICallback('changeSelected', function(data, cb)

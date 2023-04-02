@@ -16,7 +16,7 @@ if (isEnvBrowser()) {
   const root = document.getElementById('root');
 
   // https://i.imgur.com/iPTAdYV.png - Night time img
-  root!.style.backgroundImage = 'url("https://i.imgur.com/3pzRj9n.png")';
+  root!.style.backgroundImage = 'url("https://cdn.mos.cms.futurecdn.net/w6MeY2GVkNphpYjFX9V3TX.jpg")';
   root!.style.backgroundSize = 'cover';
   root!.style.backgroundRepeat = 'no-repeat';
   root!.style.backgroundPosition = 'center';

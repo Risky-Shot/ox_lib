@@ -49,3 +49,16 @@ RegisterNUICallback('closeAlert', function(data, cb)
 end)
 
 RegisterNetEvent('ox_lib:alertDialog', lib.alertDialog)
+
+function LoadTexture(dict)
+    if Citizen.InvokeNative(0x7332461FC59EB7EC, dict) then
+        RequestStreamedTextureDict(dict, true)
+        while not HasStreamedTextureDictLoaded(dict) do
+            Wait(1)
+        end
+        return true
+    else
+        return false
+    end
+end
+

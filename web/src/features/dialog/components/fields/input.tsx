@@ -4,20 +4,44 @@ import React from 'react';
 import { IInput } from '../../../../typings/dialog';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
+import {inputStyles} from '../../../../theme/styles';
+
 interface Props {
   register: UseFormRegisterReturn;
   row: IInput;
   index: number;
 }
 
-const useStyles = createStyles((theme) => ({
-  eyeIcon: {
-    color: theme.colors.dark[2],
-  },
-}));
+// const useStyles = createStyles((theme) => ({
+//   eyeIcon: {
+//     color: theme.colors.rdr[2],
+//   },
+//   inputField:{
+//     input : {   
+//     border: `3px double ${theme.colors.rdr[4]}`,
+//     backgroundColor: theme.colors.rdr[1], 
+//     color: theme.colors.rdr[4],
+//     '&:focus-within': {
+//       backgroundColor: theme.colors.rdr[2],
+//       outline: 'none',
+//       border: `2px solid ${theme.colors.rdr[4]}`,
+//       color: theme.colors.rdr[4],
+//       "::placeholder":{
+//         color: theme.colors.gray[7]
+//       }
+//     },
+//     "::placeholder":{
+//       color: theme.colors.gray[5]
+//     },
+//     "::-ms-reveal":{
+//       display: 'none'
+//     }
+//   }
+//   }
+// }));
 
 const InputField: React.FC<Props> = (props) => {
-  const { classes } = useStyles();
+  const { classes } = inputStyles();
 
   return (
     <>
@@ -31,6 +55,7 @@ const InputField: React.FC<Props> = (props) => {
           placeholder={props.row.placeholder}
           disabled={props.row.disabled}
           withAsterisk={props.row.required}
+          className={classes.inputField}
         />
       ) : (
         <PasswordInput
@@ -51,6 +76,7 @@ const InputField: React.FC<Props> = (props) => {
               fixedWidth
             />
           )}
+          // className={classes.inputField}
         />
       )}
     </>

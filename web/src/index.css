@@ -10,6 +10,11 @@ html {
   color-scheme: normal !important;
 }
 
+@font-face {
+  font-family: "chinese-rocks";
+  src: url(../assets/chinese\ rocks.ttf);
+}
+
 body {
   background: none !important;
   margin: 0;
@@ -38,6 +43,7 @@ code {
   from {
     width: 0%;
   }
+
   to {
     width: 100%;
   }
@@ -52,7 +58,8 @@ code {
 }
 
 .toast-inform {
-  background-color: #2980b9;
+  background-color: #b92929;
+  font-family: chinese-rocks;
 }
 
 .toast-success {
@@ -61,4 +68,8 @@ code {
 
 .toast-error {
   background-color: #c0392b;
+}
+
+.test {
+  font-family: 'chinese-rocks';
 }

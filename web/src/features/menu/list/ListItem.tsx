@@ -16,15 +16,20 @@ interface Props {
 
 const useStyles = createStyles((theme, params: { iconColor?: string }) => ({
   buttonContainer: {
-    backgroundColor: theme.colors.dark[6],
+    backgroundColor: theme.colors.rdr[0],
     borderRadius: theme.radius.md,
     padding: 2,
     height: 60,
     scrollMargin: 8,
     '&:focus': {
-      backgroundColor: theme.colors.dark[4],
+      backgroundColor: theme.colors.rdr[1],
       outline: 'none',
+      border: `3px solid ${theme.colors.rdr[4]}`,
     },
+    border: `5px double ${theme.colors.rdr[4]}`,
+    color: theme.colors.rdr[4],
+    fontFamily: 'chinese-rocks',
+    letterSpacing: '0.75px'
   },
   iconImage: {
     maxWidth: 32,
@@ -42,20 +47,21 @@ const useStyles = createStyles((theme, params: { iconColor?: string }) => ({
   },
   icon: {
     fontSize: 24,
-    color: params.iconColor || theme.colors.dark[2],
+    color: params.iconColor || theme.colors.rdr[4],
   },
   label: {
-    color: theme.colors.dark[2],
+    color: theme.colors.rdr[4],
     textTransform: 'uppercase',
-    fontSize: 12,
+    fontSize: 17,
     verticalAlign: 'middle',
+    lineHeight: '1.1'
   },
   chevronIcon: {
     fontSize: 14,
-    color: theme.colors.dark[2],
+    color: theme.colors.rdr[3],
   },
   scrollIndexValue: {
-    color: theme.colors.dark[2],
+    color: theme.colors.rdr[4],
     textTransform: 'uppercase',
     fontSize: 14,
   },
@@ -67,6 +73,12 @@ const useStyles = createStyles((theme, params: { iconColor?: string }) => ({
     verticalAlign: 'middle',
     marginBottom: 3,
   },
+
+  arrayValue : {
+    fontSize: 12,
+    verticalAlign : 'text-bottom',
+    lineHeight: '1.5'
+  }
 }));
 
 const ListItem = forwardRef<Array<HTMLDivElement | null>, Props>(({ item, index, scrollIndex, checked }, ref) => {
@@ -97,7 +109,7 @@ const ListItem = forwardRef<Array<HTMLDivElement | null>, Props>(({ item, index,
           <Group position="apart" w="100%">
             <Stack spacing={0} justify="space-between">
               <Text className={classes.label}>{item.label}</Text>
-              <Text>
+              <Text className={classes.arrayValue}>
                 {typeof item.values[scrollIndex] === 'object'
                   ? // @ts-ignore for some reason even checking the type TS still thinks it's a string
                     item.values[scrollIndex].label
@@ -122,8 +134,8 @@ const ListItem = forwardRef<Array<HTMLDivElement | null>, Props>(({ item, index,
             <Text className={classes.progressLabel}>{item.label}</Text>
             <Progress
               value={item.progress}
-              color={item.colorScheme || 'dark.0'}
-              styles={(theme) => ({ root: { backgroundColor: theme.colors.dark[3] } })}
+              color={item.colorScheme || 'rdr.3'}
+              styles={(theme) => ({ root: { backgroundColor: theme.colors.rdr[4] } })}
             />
           </Stack>
         ) : (

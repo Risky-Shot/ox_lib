@@ -23,3 +23,5 @@ export interface MenuSettings {
   items: Array<MenuItem>;
   startItemIndex?: number;
 }
+
+declare module "*.ttf"

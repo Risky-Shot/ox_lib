@@ -1,4 +1,4 @@
-import { Box, createStyles, Stack, Tooltip } from '@mantine/core';
+import { Box, Center, createStyles, Stack, Tooltip } from '@mantine/core';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNuiEvent } from '../../../hooks/useNuiEvent';
 import ListItem from './ListItem';
@@ -11,11 +11,13 @@ import type { MenuPosition, MenuSettings } from '../../../typings';
 
 const useStyles = createStyles((theme, params: { position?: MenuPosition; itemCount: number; selected: number }) => ({
   tooltip: {
-    backgroundColor: theme.colors.dark[6],
-    color: theme.colors.dark[2],
+    backgroundColor: theme.colors.rdr[0],
+    color: theme.colors.rdr[3],
     borderRadius: theme.radius.sm,
     maxWidth: 350,
     whiteSpace: 'normal',
+    fontSize: 16,
+    textAlign: 'center'
   },
   container: {
     position: 'absolute',

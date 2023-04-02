@@ -6,7 +6,7 @@ const useStyles = createStyles((theme) => ({
     textAlign: 'center',
     borderTopLeftRadius: theme.radius.md,
     borderTopRightRadius: theme.radius.md,
-    backgroundColor: theme.colors.dark[6],
+    backgroundColor: theme.colors.rdr[1],
     height: 60,
     width: 384,
     display: 'flex',
@@ -14,9 +14,11 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
   },
   heading: {
-    fontSize: 24,
+    fontSize: 26,
     textTransform: 'uppercase',
     fontWeight: 500,
+    color: theme.colors.rdr[4],
+    fontFamily: 'chinese-rocks'
   },
 }));
 

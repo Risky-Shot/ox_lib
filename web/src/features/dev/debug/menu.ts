@@ -6,14 +6,14 @@ export const debugMenu = () => {
     {
       action: 'setMenu',
       data: {
-        //   position: "bottom-left",
+        position: "top-right",
         title: 'Vehicle garage',
         items: [
           { label: 'Option 1', icon: 'heart' },
           {
             label: 'Option 2',
             icon: 'basket-shopping',
-            description: 'Tooltip description 1',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut',
             checked: true,
           },
           {
@@ -26,15 +26,15 @@ export const debugMenu = () => {
             label: 'Oil Level',
             progress: 30,
             icon: 'oil-can',
-            description: 'Remaining Oil: 30%',
+            description: 'Remaining Oil: 30% hasdha dhagdshugd adhgagsd ahdgahgsd adhjgahsdghaghdsa ahsgdha',
           },
           {
             label: 'Durability',
             progress: 80,
             icon: 'car-side',
             description: 'Durability: 80%',
-            colorScheme: 'blue',
-            iconColor: '#55778d',
+            colorScheme: 'rdr.2',
+            iconColor: '#d41936',
           },
           { label: 'Option 1' },
           { label: 'Option 2' },
