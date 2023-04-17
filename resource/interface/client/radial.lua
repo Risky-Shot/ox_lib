@@ -5,6 +5,7 @@
 ---@field menu? string
 ---@field onSelect? fun(currentMenu: string | nil, itemIndex: number) | string
 ---@field [string] any
+---@field keepOpen? boolean
 
 ---@class RadialMenuProps
 ---@field id string
@@ -209,7 +210,7 @@ RegisterNUICallback('radialClick', function(index, cb)
     if item.menu then
         menuHistory[#menuHistory + 1] = { id = currentRadial and currentRadial.id, option = item.menu }
         showRadial(item.menu)
-    else
+    elseif not item.keepOpen then
         lib.hideRadial()
     end
 
@@ -292,6 +293,7 @@ function lib.disableRadial(state)
     end
 end
 
+<<<<<<< HEAD
 -- lib.addKeybind({
 --     name = 'ox_lib-radial',
 --     description = 'Open radial menu',
@@ -326,6 +328,42 @@ end
 --     end,
 --     -- onReleased = lib.hideRadial,
 -- })
+=======
+lib.addKeybind({
+    name = 'ox_lib-radial',
+    description = 'Open radial menu',
+    defaultKey = 'z',
+    onPressed = function()
+        if isDisabled then return end
+
+        if isOpen then
+            return lib.hideRadial()
+        end
+
+        if #menuItems == 0 or IsNuiFocused() or IsPauseMenuActive() then return end
+
+        isOpen = true
+
+        SendNUIMessage({
+            action = 'openRadialMenu',
+            data = {
+                items = menuItems
+            }
+        })
+
+        lib.setNuiFocus(true)
+        SetCursorLocation(0.5, 0.5)
+
+        while isOpen do
+            DisablePlayerFiring(cache.playerId, true)
+            DisableControlAction(0, 1, true)
+            DisableControlAction(0, 2, true)
+            Wait(0)
+        end
+    end,
+    -- onReleased = lib.hideRadial,
+})
+>>>>>>> d093805ef455dec43d924916dbeccfc7b36c5c6b
 
 AddEventHandler('onClientResourceStop', function(resource)
     for i = #menuItems, 1, -1 do
